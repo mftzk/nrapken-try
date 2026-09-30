@@ -1,3 +1,4 @@
+// NRF-42 build-cache benchmark: comment-only source change (2026-09-30)
 import Link from "next/link";
 import { headers } from "next/headers";
 import BrandMark from "../components/BrandMark";
