@@ -15,6 +15,10 @@ host (`x-forwarded-host` / `x-forwarded-proto`) and renders the QR with `qrcode`
 as inline SVG. Change the domain (or set `TRY_PUBLIC_URL`) and the QR follows —
 no rebuild, no hardcoded domain.
 
+Scheme rule: local/private hosts use `http`, every public host is forced to
+`https` — the Quick ingress terminates TLS before the pod, so
+`x-forwarded-proto` reports `http` even for https visitors.
+
 ## Run
 
 ```bash
