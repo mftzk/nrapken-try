@@ -21,7 +21,7 @@ export default function McpSnippet() {
   const lines = SNIPPET.split("\n");
 
   return (
-    <pre className="overflow-x-auto rounded-2xl border border-night-3 bg-black/60 p-4 font-mono text-xs sm:text-sm">
+    <pre className="overflow-x-auto border border-line bg-black p-4 font-mono text-xs leading-relaxed sm:text-[13px]">
       <code>
         {lines.map((line, index) => {
           if (line.startsWith("#")) {

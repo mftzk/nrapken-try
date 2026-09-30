@@ -13,19 +13,16 @@ export default function Image() {
           height: "100%",
           display: "flex",
           flexDirection: "column",
-          backgroundColor: "#080d18",
-          padding: "80px",
+          backgroundColor: "#0a0d14",
+          borderTop: "12px solid #FF4B07",
+          padding: "72px 80px",
         }}
       >
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "20px",
-          }}
-        >
-          <div style={{ width: "96px", height: "12px", backgroundColor: "#FF4B07", borderRadius: "6px" }} />
-          <div style={{ fontSize: "30px", color: "#94a3b8" }}>nrapkén.dev</div>
+        <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+          <div style={{ width: "28px", height: "28px", backgroundColor: "#FF4B07" }} />
+          <div style={{ fontSize: "30px", color: "#8a93a5", letterSpacing: "2px" }}>
+            nrapkén.dev
+          </div>
         </div>
 
         <div
@@ -33,18 +30,18 @@ export default function Image() {
             marginTop: "auto",
             display: "flex",
             flexDirection: "column",
-            gap: "16px",
+            gap: "18px",
           }}
         >
-          <div style={{ fontSize: "150px", fontWeight: 700, color: "#ffffff", lineHeight: 1 }}>
+          <div style={{ fontSize: "158px", fontWeight: 700, color: "#f2f5f9", lineHeight: 1 }}>
             Try Us
           </div>
-          <div style={{ fontSize: "38px", color: "#94a3b8" }}>
+          <div style={{ fontSize: "34px", color: "#8a93a5" }}>
             Scan. Coba. Deploy — Quick App Deployments.
           </div>
         </div>
       </div>
     ),
-    { ...size }
+    { ...size },
   );
 }

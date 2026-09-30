@@ -27,7 +27,7 @@ export const metadata = {
 };
 
 const viewport = {
-  themeColor: "#080d18",
+  themeColor: "#0a0d14",
   width: "device-width",
   initialScale: 1,
 };
@@ -37,10 +37,7 @@ export { viewport };
 export default function RootLayout({ children }) {
   return (
     <html lang="id">
-      <body className="antialiased">
-        <div className="nrp-backdrop" aria-hidden="true" />
-        {children}
-      </body>
+      <body className="antialiased">{children}</body>
     </html>
   );
 }

@@ -23,13 +23,13 @@ Two routes only:
 3. **Styling = Tailwind v4 utility classes only** (Tailwind v4 is already wired via
    `@tailwindcss/postcss`). Small, semantic additions to `globals.css` are NOT allowed — the
    file is frozen. If you need a one-off style, use inline `style={{}}`.
-4. Brand tokens already exist in `app/globals.css` as Tailwind v4 `@theme` colors — use them:
-   `brand` (#ff4b07), `brand-strong`, `brand-tint`, `ink`, `ink-soft`, `night`, `night-2`,
-   `night-3`, `haze`, `fog`, plus `font-mono`. Examples: `bg-night-2`, `border-night-3`,
-   `text-haze`, `text-brand`, `bg-brand`, `text-fog`. The page background is already dark
-   (`#080d18`) with an ambient glow rendered by `.nrp-backdrop` in the layout — do **not** add
-   your own page-wide gradient. No glassmorphism, no rainbow palettes, no emoji, no
-   decorative fake-SaaS illustration, no invented metrics or testimonials.
+4. Brand tokens live in `app/globals.css` as Tailwind v4 `@theme` colors — use them:
+   `brand` (#ff4b07), `brand-strong`, `night` (#0a0d14 page bg), `line` (hairline border),
+   `fog` (#f2f5f9 primary text), `haze` (#8a93a5 muted text), `ink` (print ink), plus
+   `font-mono`. Examples: `border-line`, `text-haze`, `text-brand`, `bg-brand`, `text-fog`.
+   **The look is deliberately FLAT: no border radius, no shadows, no gradients, no glow,
+   no blur, no glassmorphism, no emoji.** Hierarchy comes from type scale, 1px hairlines
+   (`border-line`) and spacing. Anything that looks like generic AI SaaS output is a bug.
 5. **The brand wordmark is always written `nrapkén.dev`** (lowercase "nrapken", é, then `.dev`).
    Render it as: `nrapkén` in white/fog + `.dev` in brand orange.
 6. **Accessibility / quality bar:** semantic HTML (`<header> <main> <section> <footer> <nav>`),

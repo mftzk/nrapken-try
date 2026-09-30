@@ -1,120 +1,80 @@
 @import "tailwindcss";
 
 /* ------------------------------------------------------------------
-   nrapken.dev brand tokens (lifted from the live nrapken.dev stylesheet)
-   primary  = rgb(255 75 7)  -> #FF4B07
-   dark bg  = #111827 / #1F2937   foreground = #0F172A
+   nrapken.dev flat tokens.
+   Two neutrals + one accent, hairlines instead of elevation, no radii,
+   no gradients, no glow, no blur. Anything that needs hierarchy gets it
+   from type scale, rules and spacing — not from shadow.
    ------------------------------------------------------------------ */
 @theme {
   --color-brand: #ff4b07;
   --color-brand-strong: #e64400;
-  --color-brand-tint: #ffede4;
-
   --color-ink: #0f172a;
-  --color-ink-soft: #475569;
 
-  --color-night: #080d18;
-  --color-night-2: #0f1729;
-  --color-night-3: #1b2438;
-  --color-haze: #94a3b8;
-  --color-fog: #e2e8f0;
+  --color-night: #0a0d14;
+  --color-line: #232a38;
+  --color-line-soft: #161c26;
+  --color-fog: #f2f5f9;
+  --color-haze: #8a93a5;
 
   --font-sans: Inter, "Inter Fallback", ui-sans-serif, system-ui, -apple-system,
     "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
     "Liberation Mono", "Courier New", monospace;
-
-  --radius-card: 1.5rem;
 }
 
 :root {
   color-scheme: dark;
-  --page-bg: #080d18;
-  --page-fg: #f8fafc;
-  --page-muted: #94a3b8;
-  --panel: #0f1729;
-  --panel-border: #1b2438;
 }
 
 html {
   -webkit-text-size-adjust: 100%;
-  scroll-behavior: smooth;
 }
 
 body {
-  background-color: var(--page-bg);
-  color: var(--page-fg);
+  background-color: #0a0d14;
+  color: #f2f5f9;
   font-family: var(--font-sans);
-  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
-/* Ambient texture: one soft brand glow + a faint technical grid.
-   Deliberately restrained — no rainbow gradients, no glassmorphism. */
-.nrp-backdrop {
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  background-image:
-    radial-gradient(
-      62rem 42rem at 50% -12%,
-      rgba(255, 75, 7, 0.16),
-      rgba(255, 75, 7, 0) 62%
-    ),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-    linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
-  background-size: 100% 100%, 56px 56px, 56px 56px;
-  mask-image: radial-gradient(78% 62% at 50% 22%, #000 30%, transparent 100%);
-}
-
-.nrp-rule {
-  border-color: var(--panel-border);
-}
-
-/* QR frame corner brackets — drawn with borders, not an illustration. */
+/* Scan-me registration marks around the QR. Flat 2px strokes, square corners. */
 .nrp-bracket {
   position: absolute;
-  width: 2.25rem;
-  height: 2.25rem;
-  border-color: #ff4b07;
-  border-style: solid;
-  border-width: 0;
+  width: 1.75rem;
+  height: 1.75rem;
+  border: 0 solid #ff4b07;
 }
 @media (min-width: 640px) {
   .nrp-bracket {
-    width: 3rem;
-    height: 3rem;
+    width: 2.25rem;
+    height: 2.25rem;
   }
 }
 .nrp-bracket--tl {
-  top: -0.75rem;
-  left: -0.75rem;
-  border-top-width: 3px;
-  border-left-width: 3px;
-  border-top-left-radius: 0.75rem;
+  top: -0.5rem;
+  left: -0.5rem;
+  border-top-width: 2px;
+  border-left-width: 2px;
 }
 .nrp-bracket--tr {
-  top: -0.75rem;
-  right: -0.75rem;
-  border-top-width: 3px;
-  border-right-width: 3px;
-  border-top-right-radius: 0.75rem;
+  top: -0.5rem;
+  right: -0.5rem;
+  border-top-width: 2px;
+  border-right-width: 2px;
 }
 .nrp-bracket--bl {
-  bottom: -0.75rem;
-  left: -0.75rem;
-  border-bottom-width: 3px;
-  border-left-width: 3px;
-  border-bottom-left-radius: 0.75rem;
+  bottom: -0.5rem;
+  left: -0.5rem;
+  border-bottom-width: 2px;
+  border-left-width: 2px;
 }
 .nrp-bracket--br {
-  bottom: -0.75rem;
-  right: -0.75rem;
-  border-bottom-width: 3px;
-  border-right-width: 3px;
-  border-bottom-right-radius: 0.75rem;
+  bottom: -0.5rem;
+  right: -0.5rem;
+  border-bottom-width: 2px;
+  border-right-width: 2px;
 }
 
 .nrp-qr svg {
@@ -124,22 +84,10 @@ body {
   shape-rendering: crispEdges;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.001ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.001ms !important;
-  }
-}
-
-/* Poster mode: the scan page must survive being printed and taped to a wall.
-   The qrcode SVG carries its own fill attributes, so forcing CSS `color`
-   cannot damage the code itself. */
+/* Poster mode: `/` must survive being printed and taped to a wall.
+   Tailwind color utilities compile to literal colors, so print cannot be
+   fixed by swapping variables — ink has to be forced. The qrcode SVG
+   carries its own fill attributes, so this cannot damage the code itself. */
 @media print {
   :root {
     color-scheme: light;
@@ -148,26 +96,26 @@ body {
   body {
     background: #fff !important;
   }
-  .nrp-backdrop,
   .nrp-no-print {
     display: none !important;
   }
-  /* everything on paper is dark ink */
   body,
   body * {
     color: #0f172a !important;
   }
-  /* ...except the brand accents, which stay orange but a shade darker for ink */
   .nrp-bracket {
     border-color: #e64400 !important;
   }
+  .nrp-rule,
+  .nrp-hairline {
+    border-color: #cbd5e1 !important;
+  }
   pre {
-    background: #f8fafc !important;
+    background: #fff !important;
     border-color: #cbd5e1 !important;
   }
   .nrp-qr-card {
     border: 2px solid #0f172a !important;
-    box-shadow: none !important;
     break-inside: avoid;
   }
 }
