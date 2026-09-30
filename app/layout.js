@@ -1,7 +1,7 @@
 import "./globals.css";
 
 export const metadata = {
-  metadataBase: new URL("https://try.quick.nrapken.dev"),
+  metadataBase: new URL("https://try-nrapken.quick.nrapken.dev"),
   title: {
     default: "Try Us — nrapkén.dev",
     template: "%s — nrapkén.dev",
